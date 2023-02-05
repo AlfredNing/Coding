@@ -1,4 +1,4 @@
-package derocator;
+package decorate;
 
 /**
  * @author Alfred.Ning

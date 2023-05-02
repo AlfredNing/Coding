@@ -34,8 +34,8 @@ public class CopyListWithRandom {
         cur = head;
         while (cur != null) {
             // cur 是老的，get之后的结果就是新的
-            nodeMap.get(cur).next = cur.next;
-            nodeMap.get(cur).rand = cur.rand;
+            nodeMap.get(cur).next = nodeMap.get(cur.next);
+            nodeMap.get(cur).rand = nodeMap.get(cur.rand);
             cur = cur.next;
         }
         return nodeMap.get(head);

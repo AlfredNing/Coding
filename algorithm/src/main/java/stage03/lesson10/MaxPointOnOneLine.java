@@ -2,6 +2,7 @@ package stage03.lesson10;
 
 import java.util.HashMap;
 import java.util.Map;
+import lombok.val;
 
 /**
  * 直线最多的点
@@ -68,13 +69,26 @@ public class MaxPointOnOneLine {
           line = Math.max(line, map.get(x).get(y));
         }
       }
-      result = samePosition + Math.max(Math.max(sameX, sameY), line);
+      result = Math.max(result, samePosition + Math.max(line, Math.max(sameX, sameY)));
     }
     return result;
   }
 
   private static int gcd(int a, int b) {
     return b == 0 ? a : gcd(b, a % b);
+  }
+
+  public static void main(String[] args) {
+    Point p1 = new Point(1, 1);
+    Point p2 = new Point(2, 2);
+    Point p3 = new Point(3, 3);
+    // ---
+    Point p4 = new Point(1, 0);
+    Point p5 = new Point(0, 0);
+    Point[] points1 = {p1, p2, p3};
+//    System.out.println(maxPoints(points1));
+    Point[] points2 = {p4, p5};
+    System.out.println(maxPoints(points2));
   }
 
 }

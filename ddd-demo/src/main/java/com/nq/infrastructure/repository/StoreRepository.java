@@ -1,4 +1,4 @@
-package com.nq.infrastructure.repository.impl;
+package com.nq.infrastructure.repository;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.nq.domain.entity.Store;

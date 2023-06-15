@@ -1,7 +1,13 @@
 package stage02.lesson07;
 
-/** 连岛问题 */
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
+/**
+ * 连岛问题
+ */
 public class IsLands {
+
   public static int numsIsLands(char[][] board) {
     int isLands = 0;
     int N = board.length;

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <template id="my-app">
+        <!-- v-bind -->
+        <img v-bind:src="imageUrl" alt="" />
+        <a :href="linkUrl">百度一下</a>
+        <!-- 绑定class 对象  也可以来自data methos computed-->
+        <div class="myClass" :class="{active:isActive, title:true}">呵呵呵</div>
+        <button @click="toggle()">change</button>
+        <!-- class数组写法 -->
+        <div class="myClass" :class="['abc',title, isActive ? 'active':'']">呵呵呵</div>
+        <!-- 绑定style 可以-或者驼峰，前者需要带已引号-->
+        <div :style="{color:finalColor,fontSize: finalFontSize + 'px'}">呵呵呵呵</div>
+        <!-- 从对象获取 可以从data methods computed获取-->
+        <div :style="finalStyleObj">呵呵呵呵</div>
+        <!-- style数组语法 -->
+        <div :style="[styleObj1,styleObj2]">呵呵呵呵</div>
+        <!-- 动态绑定属性名和值 -->
+        <div :[name]="attValue">动态绑定属性</div>
+        <!-- 绑定一个对象 到属性-->
+        <div v-bind="info">绑定一个对象 到属性</div>
+
+    </template>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const App = {
+            template: "#my-app",
+            data() {
+                return {
+                    imageUrl: "https://avatars.githubusercontent.com/u/93956010?v=4",
+                    linkUrl: "https://www.baidu.com",
+                    isActive: true,
+                    title: "myTitle",
+                    finalColor: 'green',
+                    finalFontSize: 50,
+                    finalStyleObj: { color: 'yellow', fontSize: '30px' },
+                    styleObj1: { color: 'yellow', fontSize: '30px' },
+                    styleObj2: { textDecoration: 'underline' },
+                    name: 'qn',
+                    attValue: "Alfred",
+                    info: {
+                        name: "name1",
+                        age: 22
+                    }
+                }
+            },
+            methods: {
+                toggle() {
+                    this.isActive = !this.isActive;
+                }
+            },
+        }
+
+        Vue.createApp(App).mount('#app');
+    </script>
+</body>
+
+</html>

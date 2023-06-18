@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <template id="my-app">
+        <input type="text" v-model="score">
+        <div v-if="score > 90">优秀</div>
+        <div v-else-if="score > 60">良好</div>
+        <div v-else>不及格</div>
+
+        <!-- v-if 集合template -->
+        <template v-if="isShowHa">
+            <h2>哈哈</h2>
+            <h2>哈哈</h2>
+            <h2>哈哈</h2>
+        </template>
+
+        <template v-else>
+            <h2>嘿嘿</h2>
+            <h2>嘿嘿</h2>
+            <h2>嘿嘿</h2>
+        </template>
+
+        <!-- v-for 数组-->
+        <ul>
+            <li v-for="(key, index) in animals" ::key="key">{{index}}.{{key}}</li>
+        </ul>
+        <!-- v-for 对象-->
+        <ul>
+            <li v-for="(value, key, index ) in info1">{{value}} - {{index}} {{key}}</li>
+        </ul>
+        <!-- v-for 数字-->
+        <ul>
+            <li v-for="(num,index) in 10">{{num}} -- {{index}}</li>
+        </ul>
+        <!-- v-for template-->
+        <ul>
+            <template v-for="(value, key) in info1">
+                <li>{{key}}</li>
+                <li>{{value}}</li>
+            </template>
+        </ul>
+        <input type="text" v-model="newMovie" /><button @click="addMovie">添加动物</button>
+    </template>
+
+    <script src=" https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const App = {
+            template: "#my-app",
+            data() {
+                return {
+                    newMovie: "",
+                    score: 90,
+                    isShowHa: false,
+                    animals: [
+                        "dog",
+                        "cat"
+                    ],
+                    info1: {
+                        name1: "machao",
+                        age1: 22,
+                    }
+                }
+            },
+            methods: {
+                addMovie() {
+                    this.animals.push(this.newMovie);
+
+                }
+            },
+        }
+
+        Vue.createApp(App).mount('#app');
+    </script>
+</body>
+
+</html>

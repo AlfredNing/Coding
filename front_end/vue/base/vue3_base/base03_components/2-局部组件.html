@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <template id="my-app">
+        <h2>{{message}}</h2>
+        <component-a/>
+    </template>
+
+    <template id="component-a">
+        <div>
+            <h2>{{meesage}}</h2>
+        </div>
+    </template>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const componentA = {
+            template: "#component-a",
+            data() {
+                return {
+                    meesage: "我是子组件"
+                }
+            },
+        }
+        const App = {
+            template: "#my-app",
+            data() {
+                return {
+                    message: "我是父组件"
+                }
+            },
+            components:{
+                componentA
+            }
+        }
+
+        Vue.createApp(App).mount('#app');
+    </script>
+</body>
+
+</html>

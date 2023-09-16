@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+  <!-- 引入外部配置文件 -->
+  <properties resource="generator/config.properties"/>
+
+  <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+    <property name="beginningDelimiter" value="`"/>
+    <property name="endingDelimiter" value="`"/>
+
+    <!-- 引入外部配置文件 -->
+    <plugin type="${mapper.plugin}">
+      <property name="mappers" value="${mapper.Mapper}"/>
+    </plugin>
+
+    <!-- 数据库 -->
+    <jdbcConnection driverClass="${jdbc.driverClass}"
+      connectionURL="${jdbc.url}"
+      userId="${jdbc.user}"
+      password="${jdbc.password}">
+    </jdbcConnection>
+
+    <!--java实体类-->
+    <javaModelGenerator targetPackage="${targetModelPackage}" targetProject="${targetJavaProject}"/>
+
+    <!--mapper文件-->
+    <sqlMapGenerator targetPackage="${targetXMLPackage}"  targetProject="${targetResourcesProject}"/>
+
+    <!--mapper接口-->
+    <javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}" type="XMLMAPPER" />
+
+    <!--数据库表-->
+  <!-- tableName="%" 表示所有表的生成 使用默认规则 默认规则：table_dept -->
+    <table tableName="${table.name}" >
+      <!--配置主键生成策略 ,默认id-->
+      <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+    </table>
+  </context>
+</generatorConfiguration>

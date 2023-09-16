@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.nq</groupId>
+  <artifactId>MapperMBG</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <properties>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
+    <!--  basedir引用工程目录-->
+    <!--  targetJavaProject: 声明存放源码的目录位置-->
+    <targetJavaProject>${basedir}/src/main/java</targetJavaProject>
+    <!--  targetMapperPackage: 声明存放mapper接口的package位置-->
+    <targetMapperPackage>com.nq.user.mapper</targetMapperPackage>
+    <!--  targetModelPackage: 声明存放实体类位置-->
+    <targetModelPackage>com.nq.user.entity</targetModelPackage>
+    <!--  targetResourcesProject 声明存放资源文件的目录位置-->
+    <targetResourcesProject>${basedir}/src/main/resources</targetResourcesProject>
+    <!--  targetXMLPackage 声明存放mapper xml文件的目录位置 多层文件写法com/nq/mapper-->
+    <targetXMLPackage>mappers</targetXMLPackage>
+    <!--  通用mapper版本号  -->
+    <mapper.version>4.1.5</mapper.version>
+    <!--  mysql驱动版本号  -->
+    <mysql.version>5.1.46</mysql.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>tk.mybatis</groupId>
+      <artifactId>mapper</artifactId>
+      <version>${mapper.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>3.2.8</version>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${mysql.version}</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.mybatis.generator</groupId>
+        <artifactId>mybatis-generator-maven-plugin</artifactId>
+        <version>1.3.2</version>
+        <!--配置generatorConfig.xml文件的路径-->
+        <configuration>
+          <configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
+          <overwrite>true</overwrite>
+          <verbose>true</verbose>
+        </configuration>
+        <!--配置MBG插件依赖信息-->
+        <dependencies>
+          <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper</artifactId>
+            <version>${mapper.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+</project>

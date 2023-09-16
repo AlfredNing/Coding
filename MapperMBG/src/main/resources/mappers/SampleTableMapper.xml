@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nq.user.mapper.SampleTableMapper">
+  <resultMap id="BaseResultMap" type="com.nq.user.entity.SampleTable">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+    <result column="last_name" jdbcType="VARCHAR" property="lastName" />
+    <result column="birth_date" jdbcType="DATE" property="birthDate" />
+    <result column="is_active" jdbcType="BIT" property="isActive" />
+    <result column="account_balance" jdbcType="DECIMAL" property="accountBalance" />
+    <result column="email_address" jdbcType="VARCHAR" property="emailAddress" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="registration_timestamp" jdbcType="TIMESTAMP" property="registrationTimestamp" />
+    <result column="test_tinyint" jdbcType="TINYINT" property="testTinyint" />
+    <result column="test_smallint" jdbcType="SMALLINT" property="testSmallint" />
+    <result column="test_new" jdbcType="INTEGER" property="testNew" />
+    <result column="test_new2" jdbcType="INTEGER" property="testNew2" />
+    <result column="profile_image" jdbcType="LONGVARBINARY" property="profileImage" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.nq.user.entity.SampleTable">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+    <result column="last_name" jdbcType="VARCHAR" property="lastName" />
+    <result column="birth_date" jdbcType="DATE" property="birthDate" />
+    <result column="is_active" jdbcType="BIT" property="isActive" />
+    <result column="account_balance" jdbcType="DECIMAL" property="accountBalance" />
+    <result column="email_address" jdbcType="VARCHAR" property="emailAddress" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="registration_timestamp" jdbcType="TIMESTAMP" property="registrationTimestamp" />
+    <result column="test_tinyint" jdbcType="TINYINT" property="testTinyint" />
+    <result column="test_smallint" jdbcType="SMALLINT" property="testSmallint" />
+    <result column="test_new" jdbcType="INTEGER" property="testNew" />
+    <result column="test_new2" jdbcType="INTEGER" property="testNew2" />
+    <result column="profile_image" jdbcType="LONGVARBINARY" property="profileImage" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="tk.mybatis.mapper.model.SampleTable">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+    <result column="last_name" jdbcType="VARCHAR" property="lastName" />
+    <result column="birth_date" jdbcType="DATE" property="birthDate" />
+    <result column="is_active" jdbcType="BIT" property="isActive" />
+    <result column="account_balance" jdbcType="DECIMAL" property="accountBalance" />
+    <result column="email_address" jdbcType="VARCHAR" property="emailAddress" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="registration_timestamp" jdbcType="TIMESTAMP" property="registrationTimestamp" />
+    <result column="test_tinyint" jdbcType="TINYINT" property="testTinyint" />
+    <result column="test_smallint" jdbcType="SMALLINT" property="testSmallint" />
+    <result column="test_new" jdbcType="INTEGER" property="testNew" />
+    <result column="test_new2" jdbcType="INTEGER" property="testNew2" />
+    <result column="profile_image" jdbcType="LONGVARBINARY" property="profileImage" />
+  </resultMap>
+</mapper>

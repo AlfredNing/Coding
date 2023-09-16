@@ -24,3 +24,6 @@ idea
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# 将忽略所有名字以 target 开头的文件和目录。
+target*

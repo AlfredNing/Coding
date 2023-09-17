@@ -34,6 +34,7 @@ public class MPGenerator {
         .setIdType(IdType.AUTO) // 主键策略
         .setServiceName("%sService") // 设置生成接口是否有I
         .setBaseResultMap(true) // 基本resultMap
+        .setMapperName("%sDao")  // mapper类后缀名
         .setEnableCache(false) // 二级缓存
         .setBaseColumnList(true); // 设置sql片段
 

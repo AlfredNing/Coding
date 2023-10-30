@@ -1,10 +1,14 @@
 package com.nq.flowable.flowable;
 
+import java.util.HashMap;
+import java.util.Map;
 import javax.annotation.Resource;
 import org.flowable.engine.ProcessEngine;
 import org.flowable.engine.ProcessEngines;
 import org.flowable.engine.RepositoryService;
+import org.flowable.engine.RuntimeService;
 import org.flowable.engine.repository.Deployment;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -15,6 +19,9 @@ class FlowableApplicationTests {
 
   @Resource
   private RepositoryService repositoryService;
+
+  @Resource
+  private RuntimeService runtimeService;
 
 
   @Test
@@ -38,4 +45,12 @@ class FlowableApplicationTests {
 
   }
 
+  @DisplayName("启动流程")
+  @Test
+  public void testStartProcess(){
+    Map<String, Object> map = new HashMap<>();
+    map.put("assignee0","zhangsan");
+    map.put("assignee1","lisi");
+    runtimeService.startProcessInstanceById("请假流程:2:c22d438e-7461-11ee-8524-0871908e2604",map);
+  }
 }

@@ -10,6 +10,7 @@ import org.activiti.engine.TaskService;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.engine.task.Task;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -59,5 +60,25 @@ public class ProcessEngineTest {
     System.out.println(processInstance.getId());
     System.out.println(processInstance.getDeploymentId());
     System.out.println(processInstance.getDescription());
+  }
+
+  @DisplayName("待办任务查询")
+  @Test
+  public void test5() {
+    ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+    TaskService taskService = processEngine.getTaskService();
+    List<Task> list = taskService.createTaskQuery().taskAssignee("lisi").list();
+    for (Task task : list) {
+      System.out.println(task.getName());
+      System.out.println(task.getId());
+    }
+  }
+
+  @DisplayName("任务审批")
+  @Test
+  public void test6() {
+    ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+    TaskService taskService = processEngine.getTaskService();
+    taskService.complete("2505");
   }
 }

@@ -6,14 +6,20 @@ import com.nq.ioc.BeanDefinition;
 import com.nq.ioc.PropertyValue;
 import com.nq.ioc.RuntimeBeanReference;
 import com.nq.ioc.TypedStringValue;
+import com.nq.spring.ioc.DefaultListableBeanFactory;
+import com.nq.spring.reader.BeanDefinitionDocumentReader;
+import com.nq.spring.reader.XmlBeanDefinitionReader;
+import com.nq.spring.resource.ClassPathResource;
+import com.nq.spring.utils.DocumentUtils;
+import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.dom4j.Document;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,9 +32,15 @@ public class Test1 {
   private Map<String, BeanDefinition> beanDefinition = new HashMap();
   private Map<String, Object> singletionObjects = new HashMap();
 
+  private DefaultListableBeanFactory defaultListableBeanFactory;
+
   @Before
   public void init() {
+    defaultListableBeanFactory = new DefaultListableBeanFactory();
     // 加载beanDefinition
+    XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(defaultListableBeanFactory);
+    xmlBeanDefinitionReader.loadBeanDefinitions("beans.xml");
+
 
   }
 

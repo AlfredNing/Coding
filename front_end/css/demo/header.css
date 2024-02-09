@@ -1,0 +1,10 @@
+@import url("./header.css");
+
+.title{
+    /* css样式表 */
+    margin: 20px 0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+

@@ -1,0 +1,73 @@
+<!--
+
+<hgroup></hgroup>
+<header></header>
+<nav></nav>
+<section></section>
+<footer></footer>
+<article></article>
+<aside></aside>
+https://gsnedders.html5.org/outliner/
+
+
+	section使用注意：
+		section不是一般意义上的容器元素，如果想作为样式展示和脚本的便利，可以用div。
+		article、nav、aside可以理解为特殊的section，
+		所以如果可以用article、nav、aside就不要用section，没实际意义的就用div
+
+
+			article使用注意：
+		独立文章：用article
+		单独的模块：用section
+		没有语义的：用div
+
+
+footer元素代表 网页 或 section 的页脚，通常含有该节的一些基本信息，譬如：作者，相关文档链接，版权资料。
+
+	<footer>
+	    COPYRIGHT@damu
+	</footer>
+
+	footer使用注意：
+		可以是 网页 或任意 section 的底部部分；
+		没有个数限制，除了包裹的内容不一样，其他跟header类似。
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<header>
+  <hgroup>
+    <h1>网站标题</h1>
+    <h2>网站副标题</h2>
+  </hgroup>
+</header>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<section>
+  <h1>section是啥？</h1>
+  <article>
+    <h2>关于section</h1>
+      <p>section的介绍</p>
+      <section>
+        <h3>关于其他</h3>
+        <p>关于其他section的介绍</p>
+      </section>
+  </article>
+</section>
+
+
+article元素最容易跟section和div容易混淆，其实article代表一个在文档，页面或者网站中自成一体的内容
+
+<article>
+  <h1>一篇文章</h1>
+  <p>文章内容..</p>
+  <footer>
+    <p><small>版权：html5jscss网所属，作者：damu</small></p>
+  </footer>
+</article>
+</body>
+</html>

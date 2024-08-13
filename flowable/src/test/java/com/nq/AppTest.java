@@ -32,7 +32,7 @@ public class AppTest {
   @Before
   public void testProcessConfig() {
     cfg = new StandaloneProcessEngineConfiguration()
-        .setJdbcUrl("jdbc:mysql://localhost:3307/flowable?serverTimezone=UTC&nullCatalogMeansCurrent=true")
+        .setJdbcUrl("jdbc:mysql://localhost:3306/flowable?serverTimezone=UTC&nullCatalogMeansCurrent=true")
         .setJdbcUsername("root")
         .setJdbcPassword("ningqiang")
         .setJdbcDriver("com.mysql.cj.jdbc.Driver")
@@ -159,6 +159,27 @@ public class AppTest {
       System.out.println(historicActivityInstance.getAssignee());
       System.out.println(historicActivityInstance.getActivityName());
     }
+  }
+
+    /**
+     * 挂起流程
+     */
+  @Test
+  public void testSuspend() {
+      ProcessEngine processEngine = cfg.buildProcessEngine();
+      ProcessDefinition processDefinition = processEngine.getRepositoryService()
+              .createProcessDefinitionQuery()
+              .processDefinitionId("holidayRequest:1:3")
+              .singleResult();
+      boolean suspended = processDefinition.isSuspended();
+      System.out.println(suspended);
+      if (suspended) {
+          processEngine.getRepositoryService()
+                  .activateProcessDefinitionById(processDefinition.getId());
+      } else {
+          processEngine.getRepositoryService()
+                  .suspendProcessDefinitionById(processDefinition.getId());
+      }
 
   }
 }

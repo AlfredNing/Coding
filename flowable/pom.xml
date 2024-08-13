@@ -41,6 +41,12 @@
       <artifactId>flowable-spring-boot-starter</artifactId>
       <version>6.7.2</version>
     </dependency>
+      <!--自动布局-->
+    <dependency>
+      <groupId>org.flowable</groupId>
+      <artifactId>flowable-bpmn-layout</artifactId>
+      <version>6.7.2</version>
+    </dependency>
     <!-- MySQL的依赖 -->
     <dependency>
       <groupId>mysql</groupId>

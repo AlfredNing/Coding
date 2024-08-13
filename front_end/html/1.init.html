@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+DOCTYPE: 全程是Document Type Declaration
+DOCTYPE 位于一个 HTML 文档的最前面的位置，位于根元素 HTML 的起始标签之前。
+因为浏览器必须在解析 HTML 文档正文之前就确定当前文档的类型，以决定其需要采用的渲染模式
+tandards mode(strict mode) 			no-quirks mode				CSS1Compat
+almost standards mode					limited-quirks mode			CSS1Compat
+quirks mode								quirks mode					BackCompat
+
+
+<!DOCTYPE html> 表明该页面是遵守了 HTML5 规范的，浏览器会选择 Standards Mode，这种 doctype 是最推荐的一种，
+
+HTML5 不基于 SGML,所以不需要引用 DTD,浏览器内部本身有对标签进行解析渲染验证的模块
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+当 doctype 如上时，浏览器同样会选择 Standards Mode，虽然和第一种 doctype 有一些区别，但是几乎可以认为是一样的。
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	当 doctype 如上时，浏览器会选择 Almost Standards Mode，渲染时和标准会有一些区别
+
+	当 doctype 缺失的时候，浏览器会选择 Quirks Mode，这是非常不推荐的方式，
+	当 doctype上面有注释，标签或者空行时，某些浏览器都会认为该页面不具有doctype。
+	我们应该尽量避免 Quirks Mode，这对一个 web 应用是非常不利的地方。
+
+	每种docytype的渲染模式
+  https://en.wikipedia.org/wiki/Quirks_mode
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>

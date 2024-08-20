@@ -76,11 +76,30 @@
 > 按照最早标准， 行内块元素，最早也被认为是行内元素
 
 ## 修改元素的显示模式
+
 display:
+
 - inline
 - inline-block
 - block
-默认显示元素是行内块，无法设置为真正的行内
- 
+  默认显示元素是行内块，无法设置为真正的行内
 
- 
+## 显示元素总结
+
+### 默认显示是block的元素
+
+排版标签：h1-h6、p、pre/hr/ div
+列表标签：ul/ol/li/dl/dt/dd
+表单标签：form/option
+
+### 默认显示是inline的元素
+
+文本标签：em/string/del/ins/sub/sup/span
+超链接：a
+表单标签： label
+
+### 默认显示是inline-block的元素
+
+图片标签： img
+表单标签：input/button/testarea/select
+框架标签：iframe

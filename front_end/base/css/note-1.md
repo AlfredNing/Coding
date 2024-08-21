@@ -130,5 +130,13 @@ display:
 | text-indent     | 首行缩进                                                     | 20px -20px  2em                                              |
 | text-align      | 文本水平对齐方式                                             | left:靠左<br />right:靠右<br />center: 居中                  |
 | vertical-align  | 不能设置文本纵向居中，通常用来设置行内块元素与同行文本如何对齐；可以设置单元格内容纵向对齐 | bottom: 底线对齐<br />middle: 中线对齐<br />baseline: 基线对齐<br />top: 顶线对齐<br />长度：10px<br />sub：设置下标<br />super: 设置上标<br /> |
-|                 |                                                              |                                                              |
+| line-height     | 1. 上一行与下一行文字中线的距离成为行高<br />2. 上一行文字底线与下一行文字顶线的距离成为行距，调整行高大小，行距受到影响<br />3. 只有一行文字的时候，设置元素与父元素高度相同，可以达到垂直居中的效果<br />4. line-height 是font的子属性，将行高写在font的子属性中：font: bold 14px/3 'Microsoft YaHei'  3:表示字体大小的倍数 |                                                              |
+
+## 背景样式
+
+| 属性名 | 作用 | 属性值 |
+| ------ | ---- | ------ |
+|        |      |        |
+|        |      |        |
+|        |      |        |
 

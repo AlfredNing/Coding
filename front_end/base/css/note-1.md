@@ -134,9 +134,164 @@ display:
 
 ## 背景样式
 
-| 属性名 | 作用 | 属性值 |
-| ------ | ---- | ------ |
-|        |      |        |
-|        |      |        |
-|        |      |        |
+| 属性名            | 作用                                                         | 属性值                                                       |
+| ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| background-color  | 设置背景颜色，<br />1. 元素的默认的背景颜色是transparent<br />2. 给body设置背景色就是给整个页面设置 |                                                              |
+| background-image  | 设置背景图片地址                                             | url("../images/美图【微信：获取优质IT网课加微信：2268731 】.jpg") |
+| background-repeat | 设置图片背景重复方式                                         | repeat：重复<br />repeat-x：水平上重复<br />no-repeat：没有重复<br />repeat-y: 纵向重复 |
+
+
+
+### background-position设置
+
+#### 使用关键字设置
+
+设置x轴，x轴位置
+x: left right center
+y: top bottom center
+默认是center
+
+#### 通过指定坐标设置
+
+原点左上角，向左：x轴，向下：y轴
+设置的是图片的左上角位置
+如果设置一个坐标，默认另外一个是center
+
+**坐标和关键字可以混搭**
+
+#### 使用百分比设置
+
+从元素上面根据x/y轴百分比选取一个点，从图片上面根据x/y轴百分比选取一个点，两点重合
+
+也可以混搭
+
+### 背景图像固定
+
+```html
+如果 设置background-attachment: fixed
+背景图像坐标y原点的定位是视口的左上角
+当元素是显示图像与元素重合的地方
+视口：浏览器窗口
+```
+
+### 背景图像复合属性
+
+值可以是任意子属性的值，没有数量要求，没有顺序要求
+
+## 鼠标光标样式
+
+```html
+cursor: none;
+cursor: pointer;
+cursor: move;
+cursor: text;
+cursor: wait;
+
+/*  自定义鼠标光标*/
+cursor: url("../images/arrow01【微信：获取优质IT网课加微信：2268731 】.png"), wait;
+```
+
+## 列表样式
+
+| 属性名              | 作用               | 属性值          |
+| :------------------ | ------------------ | --------------- |
+| list-style-type     | 设置列表项图像     | none            |
+| list-style-position | 设置列表项图标位置 | outside\|inside |
+| list-style-image    | 设置列表项图片     | url(地址)       |
+| list-style          | 复合属性           | 多个值空格      |
+
+> 只有 ol li ul 设置列表样式才有效果
+
+## 表格样式
+
+```html
+      /*  列宽固定*/
+      table-layout: auto;
+      table-layout: fixed;
+
+      /*  设置单元格距离*/
+      border-spacing: 10px;
+      /*border-spacing: 0;*/
+      /*  合并单元格边框*/
+      border-collapse: separate;
+      /*border-collapse: collapse;*/
+
+      /*  设置表头位置*/
+      caption-side: top;
+      caption-side: bottom;
+
+	    /*设置空白单元格*/
+	    empty-cells: show;
+	    empty-cells: hide;
+```
+
+> 表格样式只对表格有效
+
+# Css选择器
+
+## 后代元素选择器
+
+```html
+选择器1 选择器2 {}
+```
+
+## 子元素选择器
+
+```html
+选择器1 > 选择器2 {}
+```
+
+## 交集选择器
+
+```html
+选择器1选择器2{}
+.item.active{}
+.active.item
+div.item{}
+```
+
+## 并集选择器
+
+```html
+.item,.active{}
+p,li{}
+.item,p{}
+h1,h2,h3,h3{}
+```
+
+## 伪类选择器
+
+```html
+:link 选择未访问过的超链接
+:visited  选择访问过的超链接
+:hover   鼠标悬停
+:active  鼠标悬停在元素且鼠标按键按下不抬起
+```
+
+##  多个伪类选择器顺序问题
+
+本身是不具备顺序，但为了符合用户体验
+
+1. :link
+2. :visited
+3. :hove
+4. :active
+
+love-hate 记忆法
+
+## 选择器权重
+
+### 单个选择器权重
+
+Id选择器>类选择器、伪类选择器>标签选择器>全局选择器
+
+### 组合选择器权重
+
+1. 两组组合器，先比较Id数量，数量多，权重高
+2. Id无法区分，比较类和伪类，多者获胜
+3. 在比较标签名数量，多者获胜
+4. 如果权重一致，后者覆盖前面
+5. 并集选择器，各自计算各自权重
+
+# 盒子模型
 

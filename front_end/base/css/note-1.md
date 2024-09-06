@@ -393,5 +393,26 @@ margin-left | margin-right : auto 可以水平居中
 1. 父元素设置边框
 2. 父元素设置内边距
 3. 父元素开启BFC: overflow:hidden
-4. 
+
+### 外边距合并
+
+1. 上面兄弟元素的下外边距与下面兄弟元素的上外边距合并，两者直接较大的外边距
+2. 外边距合并之后发生在块级元素上
+
+#### 解决合并问题
+
+不用解决
+
+## 内容溢出的方式
+
+overflow
+
+- visiable:显示，默认指
+- hidden:隐藏
+- scoll: 滚动条
+- auto:自动： 只要内容溢出在显示滚动条
+
+overflow-x / overflow-y : x方向 y方向 
+
+## 隐藏元素
 

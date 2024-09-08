@@ -414,5 +414,23 @@ overflow
 
 overflow-x / overflow-y : x方向 y方向 
 
-## 隐藏元素
+## 元素继承
+
+1. 字体样式：font-size/font-weight/font-style-font-family/font
+2. 文字颜色：color
+3. 文本样式：letter-spacing/word-spacing/text-decoration/text-indent/text-align/line-height/
+
+## 自带样式
+
+1. 标题h1-h6 font-size/font-weight/上下外边距
+2. p自带上下外边距
+3. em  font-style
+4. strong font-weight
+5. a 字段文字颜色
+
+## 样式优先
+
+直接设置的样式 > 自带的样式 > 继承的样式
+
+
 

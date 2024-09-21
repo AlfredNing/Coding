@@ -3,6 +3,7 @@ package com.nq.cost.agent;
 import javassist.ClassPool;
 import javassist.CtClass;
 import javassist.CtMethod;
+import javassist.CtNewMethod;
 
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
@@ -36,10 +37,23 @@ public class ServiceAgent implements ClassFileTransformer {
         try {
             CtClass ctClass = classPool.get("com.nq.cost.agent.UserServiceImpl");
             CtMethod method = ctClass.getDeclaredMethods("findUser")[0];
-            method.addLocalVariable("begin", CtClass.longType);
-            method.insertBefore("begin = System.currentTimeMillis();");
-            method.insertAfter("long end = System.currentTimeMillis();\n" +
-                    "            System.out.println(end-begin);");
+//            method.addLocalVariable("begin", CtClass.longType);
+//            method.insertBefore("begin = System.currentTimeMillis();");
+//            method.insertAfter("long end = System.currentTimeMillis();\n" +
+//                    "            System.out.println(end-begin);");
+
+            // 放在finally中执行
+            CtMethod newMethod = CtNewMethod.copy(method, ctClass, null);
+            newMethod.setName(newMethod.getName() + "$agent");
+            ctClass.addMethod(newMethod);
+
+            method.setBody("{  long begin = System.currentTimeMillis();\n" +
+                    "            try {\n" +
+                    "                findUser$agent($$);\n" +
+                    "            } finally {\n" +
+                    "                long end = System.currentTimeMillis();\n" +
+                    "                System.out.println(\"end-begin:\" + (end - begin));\n" +
+                    "            } }");
             return ctClass.toBytecode();
         } catch (Exception e) {
             e.printStackTrace();

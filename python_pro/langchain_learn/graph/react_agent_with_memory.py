@@ -1,0 +1,85 @@
+from langchain_openai import ChatOpenAI
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+def multiply(a: int, b: int) -> int:
+    """
+    负责两个数相乘
+    :param a: 第一个数字
+    :param b: 第二个数字
+    :return: 结果
+    """
+    return a * b
+
+
+def plus(a: int, b: int) -> int:
+    """
+    负责两个数相加
+    :param a: 第一个数字
+    :param b: 第二个数字
+    :return: 结果
+    """
+    return a + b
+
+
+def divide(a: int, b: int) -> float:
+    """
+    负责两个数除
+    :param a: 第一个数字
+    :param b: 第二个数字
+    :return: 结果
+    """
+    return a / b
+
+
+tools = [multiply, plus, divide]
+
+llm = ChatOpenAI(model='qwen-max')
+
+llm_with_tools = llm.bind_tools(tools, parallel_tool_calls=False)
+from langchain_core.messages import HumanMessage, SystemMessage, AnyMessage
+from langgraph.graph import add_messages
+
+sys_msg = SystemMessage(content='你是一位乐于助人的助手，负责对一组输入执行算术运算')
+from typing import TypedDict, Annotated
+
+
+class MessageState(TypedDict):
+    messages: Annotated[list[AnyMessage], add_messages]
+
+
+def assistant(state: MessageState):
+    return {"messages": [llm_with_tools.invoke([sys_msg] + state["messages"])]}
+
+
+from langgraph.graph import StateGraph, START, END
+from langgraph.prebuilt import ToolNode, tools_condition
+
+builder = StateGraph(MessageState)
+builder.add_node("assistant", assistant)
+builder.add_node("tools", ToolNode(tools))
+
+builder.add_edge(START, "assistant")
+builder.add_conditional_edges("assistant", tools_condition)
+builder.add_edge("tools", "assistant")
+builder.add_edge("assistant", END)
+
+# builder.add_edge("assistant", "tools")
+from langgraph.checkpoint.memory import MemorySaver
+
+memory = MemorySaver()
+graph = builder.compile(checkpointer=memory)
+
+config = {"configurable": {"thread_id": "1"}}
+messages = [HumanMessage(content="将 3 和 4相加")]
+
+resp = graph.invoke({"messages": messages}, config)
+for i in resp["messages"]:
+    i.pretty_print()
+
+messages = [HumanMessage(content="在将结果乘以10")]
+resp = graph.invoke({"messages": messages}, config)
+for i in resp["messages"]:
+    i.pretty_print()

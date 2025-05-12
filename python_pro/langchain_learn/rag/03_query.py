@@ -77,4 +77,24 @@ def get_unique_union(documents: list[list]):
 question = "根据这篇百度百科链接，你能介绍一下人工智能目前在中国的现状吗？"
 retrieval_chain = generate_queries | retriever.map() | get_unique_union
 docs = retrieval_chain.invoke({"question": question})
-print(docs)
+
+template = """根据此上下文回答以下问题：
+
+{context}
+
+问题：{question}
+"""
+
+prompt = ChatPromptTemplate.from_template(template)
+from operator import itemgetter
+
+final_rag_chain = (
+        {"context": retrieval_chain,
+         "question": itemgetter("question")}
+        | prompt
+        | llm
+        | StrOutputParser()
+)
+
+resp = final_rag_chain.invoke({"question": question})
+print(resp)

@@ -98,3 +98,4 @@ retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
 retrieval_chain_rag_fusion = generate_queries | retriever.map() | reciprocal_rank_fusion
 docs = retrieval_chain_rag_fusion.invoke({"question": question})
 print(docs)
+

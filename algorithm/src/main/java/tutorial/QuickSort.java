@@ -9,6 +9,7 @@ public class QuickSort {
         int[] arr = {5, 4, 3, 8, 2};
         sort(arr);
         System.out.println(Arrays.toString(arr));
+        System.out.println((0 -1 )/2);
     }
 
     public static void sort(int[] arr) {

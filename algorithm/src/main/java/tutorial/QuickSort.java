@@ -9,7 +9,7 @@ public class QuickSort {
         int[] arr = {5, 4, 3, 8, 2};
         sort(arr);
         System.out.println(Arrays.toString(arr));
-        System.out.println((0 -1 )/2);
+        System.out.println((0 - 1) / 2);
     }
 
     public static void sort(int[] arr) {
@@ -39,12 +39,11 @@ public class QuickSort {
         for (int i = l; i <= r; i++) {
             if (arr[i] <= pivot) {
                 swap(arr, a, i);
+                if (arr[a] == pivot) {
+                    ax = a;
+                }
+                a++;
             }
-
-            if (arr[a] == pivot) {
-                ax = a;
-            }
-            a++;
         }
         swap(arr, ax, a - 1);
         return a - 1;

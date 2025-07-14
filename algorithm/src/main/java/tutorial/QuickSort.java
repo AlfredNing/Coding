@@ -24,12 +24,12 @@ public class QuickSort {
             return;
         }
         // 返回基准值的位置
-        int mid = parition(l, r, arr);
+        int mid = partition(l, r, arr);
         quickSort(l, mid - 1, arr);
         quickSort(mid + 1, r, arr);
     }
 
-    private static int parition(int l, int r, int[] arr) {
+    private static int partition(int l, int r, int[] arr) {
         // 选定基准值
         int pivot = arr[l + (int) (Math.random() * (r - l + 1))];
 

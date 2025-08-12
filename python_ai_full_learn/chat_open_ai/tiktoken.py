@@ -4,6 +4,8 @@ import tiktoken
 
 load_dotenv()
 
+# encoding= tiktoken.encoding_for_model("g")
+
 client = OpenAI()
 
 completion = client.embeddings.create(

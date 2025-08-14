@@ -53,5 +53,23 @@ def text_to_speech():
         print('ERROR: response is %s' % (result.get_response()))
 
 
+def vision():
+    import os
+    from openai import OpenAI
+
+    completion = client.chat.completions.create(
+        model="qwen-vl-plus",
+        # 此处以qwen-vl-plus为例，可按需更换模型名称。模型列表：https://help.aliyun.com/zh/model-studio/getting-started/models
+        messages=[{"role": "user", "content": [
+            {"type": "image_url",
+             "image_url": {"url": "https://dashscope.oss-cn-beijing.aliyuncs.com/images/dog_and_girl.jpeg"}},
+            {"type": "text", "text": "这是什么"},
+        ]}]
+    )
+    print(completion.model_dump_json())
+
+
 if __name__ == '__main__':
-    text_to_speech()
+    # text_to_speech()
+
+    vision()

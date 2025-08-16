@@ -1,11 +1,15 @@
+import os
+
 from langchain_core.prompts import PromptTemplate
 from langchain_core.example_selectors import SemanticSimilarityExampleSelector
 from langchain_openai import OpenAIEmbeddings
 from langchain_chroma import Chroma
 from dotenv import load_dotenv
+from util.dashcope_emdding import BailianEmbeddings
 
 load_dotenv()
 
+embeddings = BailianEmbeddings(api_key=os.getenv('OPENAI_API_KEY'))
 examples = [
     {
         "question": "谁活得更长，穆罕默德·阿里还是艾伦·图灵？",
@@ -60,7 +64,7 @@ example_prompt = PromptTemplate.from_template("问题：{question}\n{answer}")
 
 example_selector = SemanticSimilarityExampleSelector.from_examples(
     examples,
-    OpenAIEmbeddings(),
+    embeddings,
     Chroma,
     k=1
 )

@@ -1,13 +1,16 @@
 import requests
-import json
+import json, os
 from typing import List
 from langchain_core.embeddings import Embeddings
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 class BailianEmbeddings(Embeddings):
     def __init__(
             self,
-            api_key: str,
+            api_key: str = os.getenv('OPENAI_API_KEY'),
             endpoint: str = "https://dashscope.aliyuncs.com",  # 请根据实际填写
             model_name: str = "text-embedding-v4",  # 请根据你实际使用的模型名称填写
     ):

@@ -9,7 +9,7 @@ from util.dashcope_emdding import BailianEmbeddings
 
 load_dotenv()
 
-embeddings = BailianEmbeddings(api_key=os.getenv('OPENAI_API_KEY'))
+embeddings = BailianEmbeddings()
 examples = [
     {
         "question": "谁活得更长，穆罕默德·阿里还是艾伦·图灵？",
